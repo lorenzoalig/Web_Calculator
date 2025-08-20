@@ -18,9 +18,10 @@ header {
     margin: auto;
     margin-top: 10px;
     border-radius: 10px;
+    box-shadow: 10px 15px 10px rgba(0,0,0,0.2);
 }
 
-.display {
+.screen {
     height: 80px;
     border: 1px solid darkslategrey;
     background-color:khaki;
@@ -31,6 +32,7 @@ header {
     justify-content: end;
     align-items: center;
     font-weight: bold;
+    font-size: 1.5rem;
     padding-right: 15px;
 }
 
@@ -44,17 +46,59 @@ header {
     gap: 5px;
 }
 
-.keyboard > div {
+.keyboard > button {
     text-align: center;
     font-weight: bold;
     background-color:gainsboro;
     color:darkslategray;
     width: 60px;
     height: 50px;
+    border: 1px solid rgb(108, 108, 108);
     border-radius: 60px;
     display: flex;
     justify-content: center;
     align-items: center;
+    cursor: pointer;
+}
+
+.keyboard > .operators {
+    background-color:coral;
+    color:rgb(36, 61, 61);
+}
+
+.keyboard > .operators:hover {
+    background-color:rgb(213, 107, 68);
+    color:rgb(26, 44, 44);
+}
+
+.keyboard > .operators:active {
+    background-color:rgb(181, 90, 58);
+    color:rgb(26, 44, 44);
+}
+
+.keyboard > .controls {
+    background-color:#818181;
+    color:rgb(31, 52, 52);
+}
+
+.keyboard > .controls:hover {
+    background-color:#6b6b6b;
+    color:rgb(17, 29, 29);
+}
+
+.keyboard > .controls:active {
+    background-color:#5d5d5d;
+    color:rgb(14, 23, 23);
+}
+
+.keyboard > .symbols:hover {
+    background-color:rgb(171, 171, 171);
+    color:rgb(22, 36, 36);
+}
+
+.keyboard > .symbols:active {
+    background-color:rgb(150, 150, 150);
+    color:rgb(22, 36, 36);
 }
 
 footer{

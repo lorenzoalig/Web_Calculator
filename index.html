@@ -3,6 +3,7 @@
 <head>
     <title>Lorenzo's Calculator</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/x-icon" href="images/favicon.ico">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
@@ -13,31 +14,31 @@
 
 <section id="calculator">
     
-    <div class="display">
-        <p>Displays here!</p>
+    <div class="screen">
+        <p id="display">0</p>
     </div>
 
     <div class="keyboard">
-        <div>C</div>
-        <div>+/-</div>
-        <div>%</div>
-        <div>/</div>
-        <div>7</div>
-        <div>8</div>
-        <div>9</div>
-        <div>X</div>
-        <div>4</div>
-        <div>5</div>
-        <div>6</div>
-        <div>-</div>
-        <div>1</div>
-        <div>2</div>
-        <div>3</div>
-        <div>+</div>
-        <div>L</div>
-        <div>0</div>
-        <div>,</div>
-        <div>=</div>
+        <button type="button" class="controls" onclick="clearScreen()">C</button>
+        <button type="button" class="controls" onclick="">+/-</button>
+        <button type="button" class="controls" onclick="insertOperation('%')">%</button>
+        <button type="button" class="operators" onclick="insertOperation('/')">/</button>
+        <button type="button" class="symbols" onclick="insert(7)">7</button>
+        <button type="button" class="symbols" onclick="insert(8)">8</button>
+        <button type="button" class="symbols" onclick="insert(9)">9</button>
+        <button type="button" class="operators" onclick="insertOperation('*')">X</button>
+        <button type="button" class="symbols" onclick="insert(4)">4</button>
+        <button type="button" class="symbols" onclick="insert(5)">5</button>
+        <button type="button" class="symbols" onclick="insert(6)">6</button>
+        <button type="button" class="operators" onclick="insertOperation('-')">-</button>
+        <button type="button" class="symbols" onclick="insert(1)">1</button>
+        <button type="button" class="symbols" onclick="insert(2)">2</button>
+        <button type="button" class="symbols" onclick="insert(3)">3</button>
+        <button type="button" class="operators" onclick="insertOperation('+')">+</button>
+        <button type="button" class="symbols">L</button>
+        <button type="button" class="symbols" onclick="insert(0)">0</button>
+        <button type="button" class="symbols" onclick="insert('.')">,</button>
+        <button type="button" class="operators" onclick="calculate()">=</button>
     </div>
 </section>
 
@@ -45,6 +46,8 @@
     <p>Developed by Lorenzo Ali.</p>
     <a href="https://github.com/lorenzoalig" target="_blank"><img src="images/github-mark.png" alt="Github logo" style="height:25px;vertical-align:middle;padding-right:3px"">My Github</a>
 </footer>
+
+<script src="script.js"></script>
 
 </body>
 </html>
