@@ -4,6 +4,7 @@ var firstPress = true;
 var firstComma = true;
 var lastThree = 0;
 var currentNumberIndex = 0;
+var currentNumber;
 var displayLength;
 var lastChar;
 
@@ -60,21 +61,43 @@ function insertOperation(symbol) {
         display.innerHTML += symbol;
         display.innerHTML += " ";
         firstComma = true;
-        firstPress = true;
+        if(symbol != '%')
+            firstPress = true;
         currentNumberIndex = 0;
-        console.log(currentNumberIndex);
+        console.log('size of current number:' + currentNumberIndex);
     }
 }
 
 function calculate() {
-    console.log(display.innerHTML)
-    display.innerHTML = eval(display.innerHTML);
+    let result = display.innerHTML
+        .replace(/(\d+)(\s%\s)(\d+)/g, '$1$2* $3')
+        .replace(/%/g, '/ 100');
+    display.innerHTML = eval(result);
+    if(display.innerHTML == '0')
+        firstPress = true;
     currentNumberIndex = display.innerHTML.length;
-    console.log(currentNumberIndex);
 }
 
 function invertNumber() {
-
+    let spl;
+    spl = display.innerHTML.split(/\s/);
+    currentNumber = spl[spl.length - 1];
+    currentNumberIndex = currentNumber.length
+    let result;
+    result = currentNumber + ' * (-1)';
+    result = eval(result);
+    if (result > 0) {
+        spl[spl.length - 1] = result;
+        spl = spl.join(' ');
+        display.innerHTML = spl;
+        currentNumberIndex -= 3;
+    } else {
+        result = "(" + result + ")";
+        spl[spl.length - 1] = result;
+        spl = spl.join(' ');
+        display.innerHTML = spl;
+        currentNumberIndex += 3;
+    }        
 }
 
 function clearScreen() {
@@ -82,3 +105,51 @@ function clearScreen() {
     firstPress = true;
     firstComma = true;
 }
+
+document.addEventListener('keydown', function(input) {
+    document.querySelectorAll('button').forEach(btn => {
+        btn.addEventListener('click', function () {
+            this.blur();
+        })
+    })
+
+    const key = input.key;
+    console.log(key)
+
+    if(!isNaN(key))
+        insert(key);
+    else {
+        switch(key) {
+            case '+':
+                insertOperation(key);
+                break;
+            case '-':
+                insertOperation(key);
+                break;
+            case '*':
+                insertOperation(key);
+                break;
+            case '/':
+                insertOperation(key);
+                break;
+            case '%':
+                insertOperation(key);
+                break;
+            case ',':
+                insert('.');
+                break;
+            case 'Enter':
+                calculate();
+                break;
+            case 'Backspace':
+                clearScreen();
+                break;
+            case 'Delete':
+                clearScreen();
+                break;
+            case 'F9':
+                invertNumber();
+                break;
+        }
+    }
+});
